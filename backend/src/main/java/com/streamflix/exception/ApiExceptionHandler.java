@@ -35,4 +35,10 @@ public class ApiExceptionHandler {
         return ResponseEntity.status(exception.getStatusCode())
                 .body(Map.of("message", exception.getReason()));
     }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, String>> runtime(RuntimeException exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("message", exception.getMessage()));
+    }
 }

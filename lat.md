@@ -475,6 +475,12 @@ Required environment variable:
 TMDB_API_KEY
 ```
 
+For local development, backend values are configured in:
+
+```text
+backend/src/main/resources/application.properties
+```
+
 Optional environment variables:
 
 ```text
@@ -483,6 +489,13 @@ CORS_ALLOWED_ORIGINS
 DB_URL
 DB_USERNAME
 DB_PASSWORD
+```
+
+Local CORS defaults allow Vite dev URLs:
+
+```text
+http://localhost:*
+http://127.0.0.1:*
 ```
 
 Local SQL Server credentials:
@@ -562,14 +575,14 @@ After login, users can view:
 
 Backend:
 
-```powershell
+```cmd
 cd backend
 mvn spring-boot:run
 ```
 
 Frontend:
 
-```powershell
+```cmd
 cd frontend
 npm install
 npm run dev

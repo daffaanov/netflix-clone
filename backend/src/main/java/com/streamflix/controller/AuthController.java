@@ -5,7 +5,9 @@ import com.streamflix.dto.AuthDtos.LoginRequest;
 import com.streamflix.dto.AuthDtos.RegisterRequest;
 import com.streamflix.service.AuthService;
 import jakarta.validation.Valid;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,11 @@ public class AuthController {
 
     public AuthController(AuthService authService) {
         this.authService = authService;
+    }
+
+    @GetMapping("/ping")
+    public Map<String, String> ping() {
+        return Map.of("message", "auth api is public");
     }
 
     @PostMapping("/register")

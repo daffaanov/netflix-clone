@@ -40,13 +40,14 @@ exception/         API exception handling
 
 ## Backend Setup
 
-Create environment variables:
+Configure backend values in `backend/src/main/resources/application.properties`:
 
-```powershell
-$env:TMDB_API_KEY="your_tmdb_api_key"
-$env:JWT_SECRET="change-this-to-a-long-secret-key-for-development"
-$env:DB_USERNAME="sa"
-$env:DB_PASSWORD="Password123!"
+```text
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=streamflix_db;encrypt=true;trustServerCertificate=true
+spring.datasource.username=sa
+spring.datasource.password=Password123!
+tmdb.api.key=your_tmdb_api_key_here
+app.jwt.secret=change-this-development-secret-change-this-development-secret
 ```
 
 By default, the backend connects to:
@@ -59,7 +60,7 @@ You can override it with `DB_URL`.
 
 Run the API:
 
-```powershell
+```cmd
 cd backend
 mvn spring-boot:run
 ```
@@ -85,14 +86,14 @@ TMDB endpoints require a valid JWT token from login or register.
 
 Install dependencies:
 
-```powershell
+```cmd
 cd frontend
 npm install
 ```
 
 Run the app:
 
-```powershell
+```cmd
 npm run dev
 ```
 
@@ -102,7 +103,7 @@ The frontend runs on:
 http://127.0.0.1:5173
 ```
 
-If your backend URL changes, create `frontend/.env`:
+Frontend environment values live in `frontend/.env`. If your backend URL changes, update:
 
 ```text
 VITE_API_BASE_URL=http://localhost:8080
@@ -116,6 +117,13 @@ Frontend routes:
 - `/browse` protected movie browsing page
 
 Route definitions live in `frontend/src/routes.tsx`. Page-level navigation is handled inside the page components with React Router. Reusable UI primitives follow the shadcn-style local component pattern under `frontend/src/components/ui`.
+
+For local development, the backend allows CORS from:
+
+```text
+http://localhost:*
+http://127.0.0.1:*
+```
 
 ## Current Features
 
