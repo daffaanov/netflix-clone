@@ -7,7 +7,7 @@ StreamFlix is a Netflix-style full-stack app built with:
 - Controller -> Service interface -> Impl backend architecture
 - JWT authentication
 - TMDB API data
-- H2 local database for development
+- Microsoft SQL Server database
 
 ## Project Structure
 
@@ -36,15 +36,26 @@ exception/         API exception handling
 - Maven
 - Node.js 18+
 - TMDB API key
+- SQL Server running on `localhost:1433`
 
 ## Backend Setup
 
-Create an environment variable for TMDB:
+Create environment variables:
 
 ```powershell
 $env:TMDB_API_KEY="your_tmdb_api_key"
 $env:JWT_SECRET="change-this-to-a-long-secret-key-for-development"
+$env:DB_USERNAME="sa"
+$env:DB_PASSWORD="Password123!"
 ```
+
+By default, the backend connects to:
+
+```text
+jdbc:sqlserver://localhost:1433;databaseName=streamflix_db;encrypt=true;trustServerCertificate=true
+```
+
+You can override it with `DB_URL`.
 
 Run the API:
 

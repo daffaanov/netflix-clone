@@ -409,7 +409,7 @@ The app is implemented as a full-stack Netflix clone:
 * Auth: JWT access token
 * Password hashing: BCrypt
 * Data provider: TMDB API
-* Local development database: H2
+* Database: Microsoft SQL Server on localhost:1433
 
 ---
 
@@ -480,6 +480,22 @@ Optional environment variables:
 ```text
 JWT_SECRET
 CORS_ALLOWED_ORIGINS
+DB_URL
+DB_USERNAME
+DB_PASSWORD
+```
+
+Local SQL Server credentials:
+
+```text
+username: sa
+password: Password123!
+```
+
+Default database connection:
+
+```text
+jdbc:sqlserver://localhost:1433;databaseName=streamflix_db;encrypt=true;trustServerCertificate=true
 ```
 
 ---
